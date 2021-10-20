@@ -1,0 +1,116 @@
+:root {
+    /* Font variable */
+    --font:'EB Garamond', serif;
+
+    /* Colors variables */
+    --black: #1F1F1F;
+    --white: #ffffff;
+    /* Griffindor */
+    --grif-primary: #AE0001;
+    --grif-secondary: #EEBA30;
+    --grif-accent: #671010;
+    /* Slytherin */
+    --sly-primary: #2A623D;
+    --sly-secondary: #AAAAAA;
+    --sly-accent: #265937;
+    /* Hufflepuff */
+    --huff-primary: #FFDB00;
+    --huff-secondary: #60605C;
+    /* Ravenclaw */
+    --raven-primary: #222F5B;
+    --raven-secondary: #1F1F1F;
+}   
+
+/* GLOBAL STYLES */
+
+*, *::before, *::after {
+    font-family: var(--font);
+    box-sizing: border-box;
+    color: var(--white);
+}
+
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 2.4rem;
+    background-color: var(--black);
+}
+h1, h2, h3, h4 {
+    text-align: center;
+}
+img {
+    max-width: 100%;
+}
+a {
+    text-decoration: none;
+}
+
+/* UTILITIES */
+.container {
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+}
+header .navigation {
+    text-align: center;
+}
+header .logo {
+    max-width: 15rem;
+    margin: 0 auto;
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.navigation ul li {
+    padding: 2rem;
+    width: 100%;
+}
+
+/* Media queries for header */
+@media only screen and (min-width: 768px) {
+
+    header .logo {
+        margin: 0;
+    }
+    header .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .navigation ul {
+        width: fit-content;
+    }
+
+    .navigation ul li {
+        width: fit-content;
+        display: inline-block;
+        padding: 2rem;
+    }
+
+    .navigation ul li a {
+        font-size: 3rem;
+    }
+}
+
+/* HOME SECTION STYLES */
+
+h1 {
+    font-size: 3.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+    h1 {
+        font-size: 4.8rem;
+    }
+}
+
+/* MAIN SECTION (CHARACTERS) */
