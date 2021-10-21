@@ -38,9 +38,13 @@ function showPictures() {
     for (let pictureSrc of pictures) {
         if (pictureSrc !== '') {
             const pictureContainer = document.createElement('div');
+            const picLink = document.createElement('a');
+            picLink.setAttribute('href', pictureSrc);
+            picLink.setAttribute('target', "_blank");
             const pic = document.createElement('img');
             pic.setAttribute('src', pictureSrc);
-            pictureContainer.appendChild(pic);
+            picLink.appendChild(pic);
+            pictureContainer.appendChild(picLink);
             container.appendChild(pictureContainer);
         }
     };

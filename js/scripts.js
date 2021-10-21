@@ -94,15 +94,16 @@ function listenOrderChange() {
     const select1 = document.getElementById('order1');
     const sortButton = document.getElementById('sortButton');
     const resetButton = document.getElementById('resetButton');
-
+    
     
     sortButton.addEventListener('click', (e) => {
         e.preventDefault();
         sortCharacters(select1.value);
     });
-
+    
     resetButton.addEventListener('click', (e) => {
         e.preventDefault();
+        document.getElementById('houseWarning').style.display = 'none';
         getCharacters();
     });
 }
