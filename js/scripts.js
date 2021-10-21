@@ -11,8 +11,6 @@ function main() {
     getCharacters();
 
     listenOrderChange();
-
-    playMusic();
 }
 
 function getCharacters() {

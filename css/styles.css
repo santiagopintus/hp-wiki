@@ -142,10 +142,6 @@ h1 {
 .music-container {
     margin: 0 auto;
 }
-.music-container .play-btn {
-    max-width: 8rem;
-    cursor: pointer;
-}
 /* Form to order characters */
 .order-characters {
     width: fit-content;
