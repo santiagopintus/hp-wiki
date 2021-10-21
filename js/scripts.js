@@ -33,13 +33,23 @@ function getCharacters() {
     promise.then(showCharacters);
 }
 
-function showCharacters() {
+function showCharacters(removeNoHouseChar = false) {
     const container = document.getElementById('charactersContainer');
     
     container.innerHTML = ''
 
     for (let character of characters) {
+        if (removeNoHouseChar) {
+            if (character.house !== '') {
+                createCharacter(character);
+            }
+        } else {
+            createCharacter(character);
+        }
+        
+    }
 
+    function createCharacter(character) {
         const characterContainer = document.createElement('div');
         characterContainer.classList.add('character');
 
@@ -66,12 +76,18 @@ function showCharacters() {
 }
 
 function sortCharacters(i) {
+    const warning = document.getElementById('houseWarning');
 
     characters.sort((a, b) => {
         return a[i].localeCompare(b[i]);
     });
-
-    showCharacters();
+    if (i == 'house') {
+        showCharacters(true);
+        warning.style.display = 'block';
+    } else {
+        warning.style.display = 'none';
+        showCharacters();
+    }
 }
 
 function listenOrderChange() {
