@@ -5,6 +5,7 @@
     /* Colors variables */
     --black: #1F1F1F;
     --white: #ffffff;
+    --gray: #60605C;
     /* Griffindor */
     --grif-primary: #AE0001;
     --grif-secondary: #EEBA30;
@@ -51,6 +52,30 @@ a {
     width: 90%;
     max-width: 120rem;
     margin: 0 auto;
+}
+.sort-options {
+    display: flex;
+    justify-content: space-evenly;
+}
+.btn {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 2rem auto;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.btn:active {
+    transform: translateY(2px);
+}
+.btn-primary {
+    background-color: var(--sly-accent);
+    color: var(--white);
+}
+.btn-secondary {
+    background-color: var(--sly-secondary);
+    color: var(--black);
 }
 
 /* HEADER */
@@ -108,10 +133,30 @@ header .logo {
     }
 }
 
-/* HOME SECTION STYLES */
+/*----- HOME SECTION STYLES ------*/
 
 h1 {
     font-size: 3.5rem;
+}
+
+.music-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.music-container .play-btn {
+    max-width: 8rem;
+    cursor: pointer;
+}
+/* Form to order characters */
+.order-characters {
+    width: fit-content;
+    display: block;
+    margin: 0 auto 2rem auto;
+}
+.order-characters select,
+.order-characters select option{
+    color: var(--black);
 }
 
 @media only screen and (min-width: 768px) {
@@ -121,3 +166,72 @@ h1 {
 }
 
 /* MAIN SECTION (CHARACTERS) */
+.character {
+    padding: 1rem 4rem;
+    margin-bottom: 2rem;
+}
+
+.character.gryffindor {
+    background-color: var(--grif-accent);
+}
+.character.slytherin {
+    background-color: var(--sly-accent);
+}
+.character.ravenclaw {
+    background-color: var(--raven-primary);
+}
+.character.hufflepuff {
+    background-color: var(--huff-primary);
+}
+.character.hufflepuff h4,
+.character.hufflepuff p,
+.character.hufflepuff span {
+    color: var(--black);
+}
+.character.no-house {
+    background-color: var(--gray);
+}
+.character .img-container {
+    margin: 0 auto;
+    width: 16.3rem;
+    height: 22.7rem;
+    overflow: hidden;
+}
+.character .label {
+    font-weight: bold;
+}
+.character .char-info p{
+    font-size: 1.8rem;
+}
+
+/*Media queries for characters*/
+@media only screen and (min-width: 768px) {
+    #charactersContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+/*---------------- GALLERY PAGE --------------- */
+#picturesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+#picturesContainer div {
+    width: 100%;
+}
+#picturesContainer div img{
+    width: 100%;
+}
+
+/* Media queries for gallery */
+@media only screen and (min-width: 768px) {
+    #picturesContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+}

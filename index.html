@@ -26,12 +26,14 @@
     <!-- Navigation bar -->
     <header>
         <nav class="navigation container">
-            <div class="logo">
-                <img src="images/HP.png" alt="Logo of Harry Potter">
-            </div>
+            <a href="index.html">
+                <div class="logo">
+                    <img src="images/HP.png" alt="Logo of Harry Potter">
+                </div>
+            </a>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="#">Gallery</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </nav>
     </header>
@@ -41,11 +43,30 @@
         <h1>Welcome to The Harry Potter Wiki!</h1>
         <p>In Harry Potter Wiki, you can search for characters and maybe learn about them! We have such complete information about all of them. So, there are no excuses to learn something new.</p>
         <p>I hope you have a great experience on this site! Use it well!</p>
+
+        <div class="music-container">
+            <img class="play-btn" src="images/playBtn.svg" alt="Play music button">
+            <p>Maybe you want to listen to something as you search for characters.</p>
+        </div>
     </section>
 
     <main class="container">
         
         <h2>Characters</h2>
+
+        <form class="order-characters">
+            <label for="order1">Order by:</label>
+            <select id="order1">
+                <option value="name">Name</option>
+                <option value="house">House</option>
+            </select>
+
+            <div class="sort-options">
+                <button id="sortButton" class="btn btn-primary">Sort</button>
+                <button id="resetButton" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+
 
         <div id="charactersContainer">
             <!-- Characters go here thanks to JS -->

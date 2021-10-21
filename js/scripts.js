@@ -1,24 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     main();
-})
+});
 
 const characters = [];
 
-/* URLS */
+/* URL */
 allCharactersUrl = "http://hp-api.herokuapp.com/api/characters";
-studentsUrl = "http://hp-api.herokuapp.com/api/characters/students";
-staffUrl = "http://hp-api.herokuapp.com/api/characters/staff";
-/* Houses URLS*/
-griffUrl = "https://hp-api.herokuapp.com/api/characters/house/gryffindor";
-slythUrl = "https://hp-api.herokuapp.com/api/characters/house/slytherin";
-huffUrl = "https://hp-api.herokuapp.com/api/characters/house/hufflepuff";
-ravenUrl = "https://hp-api.herokuapp.com/api/characters/house/ravenclaw";
 
 function main() {
     getCharacters();
+
+    listenOrderChange();
+
+    playMusic();
 }
 
 function getCharacters() {
+
+    while (characters[0]) {
+        characters.pop();
+    }
 
     let promise = fetch(allCharactersUrl)
         .then(response => response.json())
@@ -36,9 +37,83 @@ function getCharacters() {
 
 function showCharacters() {
     const container = document.getElementById('charactersContainer');
+    
+    container.innerHTML = ''
 
     for (let character of characters) {
-        console.log(character);
-        const characterElement = document.createElement('div');
+
+        const characterContainer = document.createElement('div');
+        characterContainer.classList.add('character');
+
+        //If there is no info I show "unknown"
+        const charName = (character.name) ? character.name : 'Unknown';
+        const charImgSrc = (character.image) ? character.image : 'images/unknown.svg';
+        const charHouse = (character.house) ? character.house : 'Unknown';
+        //Determines the html lass assigned to the character according to the house
+        const charClass = (character.house) ? character.house.toLowerCase() : 'no-house';
+        characterContainer.classList.add(charClass);
+
+        characterContainer.innerHTML = `<h4>${charName}</h4>
+                                        <div class="img-container">
+                                            <img src="${charImgSrc}" alt="Image of ${charName}">
+                                        </div>
+                                        <div class="char-info">
+                                            <p><span class="label">House</span>: ${charHouse}</p>
+                                            <p><span class="label">Wizard</span>: ${(character.wizard) ? 'Yes' : 'No'}</p>
+                                            <p><span class="label">Status</span>: ${(character.alive) ? 'Alive' : 'Deceased'}</p>
+                                        </div>`;
+        
+        container.appendChild(characterContainer);
+    }
+}
+
+function sortCharacters(i) {
+
+    characters.sort((a, b) => {
+        return a[i].localeCompare(b[i]);
+    });
+
+    showCharacters();
+}
+
+function listenOrderChange() {
+    const select1 = document.getElementById('order1');
+    const sortButton = document.getElementById('sortButton');
+    const resetButton = document.getElementById('resetButton');
+
+    
+    sortButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        sortCharacters(select1.value);
+    });
+
+    resetButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        getCharacters();
+    });
+}
+
+function playMusic() {
+    const button = document.querySelector('.play-btn');
+    let audio = getAudioFile();
+    
+    button.addEventListener('click', () => {
+
+        if (button.getAttribute('src') == 'images/playBtn.svg') {
+            button.setAttribute('src', 'images/pauseBtn.svg');
+            audio.play();
+        } else {
+            button.setAttribute('src', 'images/playBtn.svg');
+            audio.pause();
+        }
+        
+
+    })
+
+    function getAudioFile() {
+        let audios = ['music/audio1.mp3', 'music/audio2.mp3', 'music/audio3.mp3'];
+        randomAudio = audios[Math.floor(Math.random() * audios.length)];
+        let audio = new Audio(randomAudio);
+        return audio
     }
 }
