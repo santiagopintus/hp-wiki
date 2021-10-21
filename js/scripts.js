@@ -92,28 +92,3 @@ function listenOrderChange() {
         getCharacters();
     });
 }
-
-function playMusic() {
-    const button = document.querySelector('.play-btn');
-    let audio = getAudioFile();
-    
-    button.addEventListener('click', () => {
-
-        if (button.getAttribute('src') == 'images/playBtn.svg') {
-            button.setAttribute('src', 'images/pauseBtn.svg');
-            audio.play();
-        } else {
-            button.setAttribute('src', 'images/playBtn.svg');
-            audio.pause();
-        }
-        
-
-    })
-
-    function getAudioFile() {
-        let audios = ['music/audio1.mp3', 'music/audio2.mp3', 'music/audio3.mp3'];
-        randomAudio = audios[Math.floor(Math.random() * audios.length)];
-        let audio = new Audio(randomAudio);
-        return audio
-    }
-}

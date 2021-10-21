@@ -140,9 +140,7 @@ h1 {
 }
 
 .music-container {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+    margin: 0 auto;
 }
 .music-container .play-btn {
     max-width: 8rem;
@@ -157,6 +155,10 @@ h1 {
 .order-characters select,
 .order-characters select option{
     color: var(--black);
+    font-size: 1.8rem;
+}
+.order-characters select {
+    font-size: 2.4rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -230,8 +232,12 @@ h1 {
 /* Media queries for gallery */
 @media only screen and (min-width: 768px) {
     #picturesContainer {
-        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #picturesContainer {
         grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
     }
 }
