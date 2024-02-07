@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     main();
 });
 //URL
-const allCharactersUrl = "https://hp-api.herokuapp.com/api/characters"
+const allCharactersUrl = "https://hp-api.onrender.com/api/characters"
 const pictures = [];
 
 function main() {

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const characters = [];
 
 /* URL */
-allCharactersUrl = "https://hp-api.herokuapp.com/api/characters";
+allCharactersUrl = "https://hp-api.onrender.com/api/characters";
 
 function main() {
     getCharacters();
